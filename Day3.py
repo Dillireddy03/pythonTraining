@@ -1,19 +1,23 @@
 #1. Print numbers from 1 to 50
 for i in range(1, 51):
     print(i, end=" ")
+print("\n")
 
 #2. Print even numbers from 1 to 100
-for i in range(1, 101, 2):
-    print(i, end=" ")
-
-#3. Print odd numbers from 1 to 100
 for i in range(2, 101, 2):
     print(i, end=" ")
+
+print("\n")
+
+#3. Print odd numbers from 1 to 100
+for i in range(1, 101, 2):
+    print(i, end=" ")
+print("\n")
 
 # 4. Multiplication table of 7
 for i in range(1, 11):
     print(f"7 x {i} = {7 * i}")
-
+print("\n")
 #5. Sum of numbers from 1 to 100
 total_sum = sum(range(1, 101))
 print("Sum of numbers from 1 to 100:", total_sum)
@@ -21,7 +25,7 @@ print("Sum of numbers from 1 to 100:", total_sum)
 #6. Reverse numbers from 50 to 1
 for i in range(50, 0, -1):
     print(i, end=" ")
-
+print("\n")
 #7. Count numbers divisible by 3 (1–100)
 count = 0
 for i in range(1, 101):
@@ -41,15 +45,15 @@ for i in range(1, 11):
 n = int(input("Enter a number: "))
 for i in range(1, n + 1):
     print(i, end=" ")
-
+print("\n")
 #11. Print numbers 1 to 20 using while loop
 i = 1
 while i <= 20:
     print(i, end=" ")
     i += 1
-
+print("\n")
 #12. Factorial using while
-num = int(input("Enter a number: "))
+num = int(input("Enter a number to find factorial: "))
 factorial = 1
 i = 1
 while i <= num:
@@ -58,7 +62,7 @@ while i <= num:
 print(f"Factorial of {num} is {factorial}")
 
 #13. Reverse a number using while
-num = int(input("Enter a number: "))
+num = int(input("Enter a number to reverse: "))
 reverse = 0
 while num > 0:
     digit = num % 10
@@ -67,7 +71,7 @@ while num > 0:
 print("Reversed number:", reverse)
 
 #14. Count digits using while
-num = int(input("Enter a number: "))
+num = int(input("Enter a number to count digits: "))
 count = 0
 while num > 0:
     num //= 10
@@ -76,7 +80,7 @@ print("Number of digits:", count)
 
 #15. Keep asking input until "stop" using while
 while True:
-    user = input("Enter something: ")
+    user = input("say something(type stop to stop): ")
     if user.lower() == "stop":
         break
 
@@ -94,6 +98,7 @@ for i in range(1, 5):
 for i in range(1, 6):
     for j in range(1, 11):
         print(f"{i}x{j}={i*j}", end="  ")
+        print("\n")
     print()
 
 #19. Print A B C pattern
@@ -101,7 +106,7 @@ for i in range(3):
     for j in ['A', 'B', 'C']:
         print(j, end=" ")
     print()
-
+print("\n")
 #20. Matrix pattern
 num = 1
 for i in range(3):
@@ -111,11 +116,11 @@ for i in range(3):
     print()
 
 #21. Count total characters in a string
-string = input("Enter a string: ")
+string = input("Enter a string to find length: ")
 print("Total characters:", len(string)) 
 
 #22. Count vowels in a string
-s = "dilli reddy"
+s = input("enter string to count vowels :-")
 vowels = "aeiou"
 count = 0
 
@@ -126,7 +131,7 @@ for i in s:
 print(count)
 
 #23. Count consonants in a string
-s = "python"
+s = input("enter string to count consonants :-")
 vowels = "aeiou"
 count = 0
 
@@ -137,14 +142,14 @@ for i in s:
 print(count)
 
 #24. Reverse a string using loop
-s = "dilli reddy"
+s = input("enter a string to reverse :-")
 reverse = ""
 for i in s:
     reverse = i + reverse
 print(reverse)
 
 #25. Check if string is palindrome
-s = "madam"
+s = input("enter a string check either it is palindrome or not :-")
 reverse = ""
 for i in s:
     reverse = i + reverse
@@ -205,7 +210,7 @@ print("Total elements:", count)
 
 #35. Check if element exists in a list
 numbers = [1, 2, 3, 4, 5]   
-element = 3 
+element = input("enter element to check existence :-")
 exists = False
 for i in numbers:
     if i == element:

@@ -9,16 +9,13 @@ conn = mysql.connector.connect(
     password="Dilli@03",
     database="expense_db"
 )
-
 cursor = conn.cursor()
-
 
 class BaseExpense(ABC):
 
     @abstractmethod
     def add_expense(self):
         pass
-
 
 class User:
     def __init__(self, name):
@@ -33,10 +30,8 @@ class User:
             (self.__name,)
         )
         conn.commit()
-
         print("Created Successfully...!")
         print("User ID:", cursor.lastrowid)
-
 
 class Expense(User, BaseExpense):
 
@@ -52,20 +47,16 @@ class Expense(User, BaseExpense):
         conn.commit()
         print("Expense Added successfully...!")
 
-
 #========operation functions===========#
-
 CATEGORIES = [
     "Food", "Travel", "Shopping", "Bills",
     "Health", "Entertainment", "Education", "Other"
 ]
 
-
 def show_categories():
     print("\nSelect Category:")
     for i, cat in enumerate(CATEGORIES, start=1):
         print(f"{i}. {cat}")
-
 
 def get_category_choice():
     while True:
@@ -79,7 +70,6 @@ def get_category_choice():
         except:
             print("Enter valid number")
 
-
 def show_users():
     cursor.execute("SELECT * FROM users")
     users = cursor.fetchall()
@@ -87,7 +77,6 @@ def show_users():
     print("\nUsers:")
     for user in users:
         print(f"ID: {user[0]} | Name: {user[1]}")
-
 
 def view_expenses(user_id):
     cursor.execute("""
@@ -118,18 +107,14 @@ Date: {row[5]}
 
     return data
 
-
 def filter_by_category(expenses, category):
     return list(filter(lambda x: x[3] == category, expenses))
-
 
 def filter_by_date(expenses, date):
     return [exp for exp in expenses if str(exp[5]) == date]
 
-
 def total_expense(expenses):
     return reduce(lambda x, y: x + y, map(lambda x: x[2], expenses), 0)
-
 
 def category_spending(expenses):
     categories = {exp[3] for exp in expenses}
@@ -138,7 +123,6 @@ def category_spending(expenses):
         for cat in categories
     }
 
-
 def monthly_report(expenses):
     report = {}
     for exp in expenses:
@@ -146,16 +130,13 @@ def monthly_report(expenses):
         report[month] = report.get(month, 0) + exp[2]
     return report
 
-
 def highest_expense(expenses):
     return reduce(lambda x, y: x if x[2] > y[2] else y, expenses)
-
 
 def smart_insight(expenses):
     data = category_spending(expenses)
     max_cat = max(data, key=data.get)
     return f"You are spending too much on {max_cat}"
-
 
 def update_expense(exp_id, amount):
     cursor.execute(
@@ -165,19 +146,16 @@ def update_expense(exp_id, amount):
     conn.commit()
     print("Updated Successfully...!")
 
-
 def delete_expense(exp_id):
     cursor.execute("DELETE FROM expenses WHERE exp_id=%s", (exp_id,))
     conn.commit()
     print("Deleted Successfully...!")
 
-
 #========MAIN MEN===========#
-
 while True:
     print("""
 ===== Smart Expense Manager =====
-
+          
 1. Create User
 2. Add Expense
 3. View Expenses
@@ -192,7 +170,6 @@ while True:
 12. Delete Expense
 13. Exit
 """)
-
     choice = int(input("Enter choice: "))
 
     if choice == 1:
